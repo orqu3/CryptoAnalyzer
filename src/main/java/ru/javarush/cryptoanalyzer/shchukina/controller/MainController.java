@@ -1,24 +1,19 @@
 package ru.javarush.cryptoanalyzer.shchukina.controller;
 
-import ru.javarush.cryptoanalyzer.shchukina.service.DecriptService;
-import ru.javarush.cryptoanalyzer.shchukina.service.EncryptService;
+import ru.javarush.cryptoanalyzer.shchukina.command.Action;
+import ru.javarush.cryptoanalyzer.shchukina.entity.Result;
+import ru.javarush.cryptoanalyzer.shchukina.entity.ResultCode;
+import ru.javarush.cryptoanalyzer.shchukina.exception.AppException;
 
 public class MainController {
 
-    private final DecriptService decriptService;
-    private final EncryptService encryptService;
+    public Result execute(String command, String[] parameters) {
 
-    public MainController(DecriptService decriptService, EncryptService encryptService) {
-        this.decriptService = decriptService;
-        this.encryptService = encryptService;
+        try {
+            Action action = Actions.find(command);
+            return action.execute(parameters);
+        } catch (AppException e) {
+            return new Result(ResultCode.ERROR, e.getMessage());
+        }
     }
-
-    public void encrypt() {
-        encryptService.encrypt();
-    }
-
-    public void decrypt() {
-        decriptService.decrypt();
-    }
-
 }

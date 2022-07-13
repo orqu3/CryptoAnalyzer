@@ -10,6 +10,9 @@ public class AppLauncher {
 
         Application application = new Application(mainController);
         Result result = application.run();
-        System.out.println(result);
+
+        if (result != null) {
+            System.out.println(result);
+        }
     }
 }

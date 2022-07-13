@@ -5,8 +5,8 @@ import ru.javarush.cryptoanalyzer.shchukina.command.*;
 public enum Actions {
     ENCRYPT(new Encrypter()),
     DECRYPT(new Decripter()),
-    HACK_WITH_BRUTE_FORCE(new BruteForcer()),
-    HACK_WITH_STATIC_ANALYZE(new StaticAnalyzer());
+    DECRYPT_BY_BRUTE_FORCE(new BruteForcer()),
+    DECRYPT_BY_STATISTICAL_ANALYZE(new StatisticalAnalyzer());
 
     private final Action action;
 

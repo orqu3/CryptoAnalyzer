@@ -50,15 +50,15 @@ public class Application {
 
     private Result encrypt() {
         System.out.println("Enter: source, destination for encrypted file and key");
-        String fileName = scanner.nextLine();
-        String encryptedFileName = scanner.nextLine();
-        String key = scanner.nextLine();
+        String fileName = scanner.next();
+        String encryptedFileName = scanner.next();
+        String key = scanner.next();
         String[] parameters = new String[3];
         parameters[0] = fileName;
         parameters[1] = encryptedFileName;
         parameters[2] = key;
 
-        return mainController.execute("encrypt", parameters);
+        return mainController.execute("ENCRYPT", parameters);
     }
 
     private Result decrypt() {

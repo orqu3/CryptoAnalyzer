@@ -11,8 +11,12 @@ public class MainController {
 
         try {
             Action action = Actions.find(command);
-            return action.execute(parameters);
+            Result result = action.execute(parameters);
+            System.out.println(result);
+            return result;
+
         } catch (AppException e) {
+            System.out.println(e.getMessage());
             return new Result(ResultCode.ERROR, e.getMessage());
         }
     }

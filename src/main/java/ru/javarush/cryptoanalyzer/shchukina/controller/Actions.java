@@ -4,7 +4,7 @@ import ru.javarush.cryptoanalyzer.shchukina.command.*;
 
 public enum Actions {
     ENCRYPT(new Encrypter()),
-    DECRYPT(new Decripter()),
+    DECRYPT(new Decrypter()),
     DECRYPT_BY_BRUTE_FORCE(new BruteForcer()),
     DECRYPT_BY_STATISTICAL_ANALYZE(new StatisticalAnalyzer());
 

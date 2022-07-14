@@ -1,6 +1,5 @@
 package ru.javarush.cryptoanalyzer.shchukina.command;
 
-import ru.javarush.cryptoanalyzer.shchukina.constant.Strings;
 import ru.javarush.cryptoanalyzer.shchukina.entity.Result;
 import ru.javarush.cryptoanalyzer.shchukina.entity.ResultCode;
 import ru.javarush.cryptoanalyzer.shchukina.exception.AppException;
@@ -12,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+
+import static ru.javarush.cryptoanalyzer.shchukina.constant.Strings.ALPHABET;
 
 public class Encrypter implements Action {
 
@@ -51,11 +52,12 @@ public class Encrypter implements Action {
         StringBuilder builder = new StringBuilder();
 
         for (int i = 0; i < string.length(); i++) {
-            char symbol = string.charAt(i);
-            int alphabetSymbolIndex = Strings.ALPHABET.indexOf(symbol);
+            char symbol = string.toLowerCase().charAt(i);
+            int alphabetSymbolIndex = ALPHABET.indexOf(symbol);
+            int offset = (alphabetSymbolIndex + key) % ALPHABET.length();
 
             if (alphabetSymbolIndex != -1) {
-                builder.append(Strings.ALPHABET.charAt((alphabetSymbolIndex + key) % Strings.ALPHABET.length()));
+                builder.append(ALPHABET.charAt(offset));
             } else {
                 builder.append(symbol);
             }

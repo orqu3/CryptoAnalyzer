@@ -25,12 +25,18 @@ public class Application {
             int choice = scanner.nextInt();
 
             switch (choice) {
-                case 0 -> printInstructions();
+                case 0 -> {
+                    result = null;
+                    printInstructions();
+                }
                 case 1 -> result = encrypt();
                 case 2 -> result = decrypt();
                 case 3 -> result = bruteForceHack();
                 case 4 -> result = statisticAnalyze();
-                case 5 -> quit = true;
+                case 5 -> {
+                    result = null;
+                    quit = true;
+                }
                 default -> System.out.println("You entered incorrect value. Please, try again.");
             }
         }
@@ -63,21 +69,21 @@ public class Application {
 
     private Result decrypt() {
         System.out.println("Enter: encrypted source, destination for decrypted file and key");
-        String encryptedFileName = scanner.nextLine();
-        String decryptedFileName = scanner.nextLine();
-        String key = scanner.nextLine();
+        String encryptedFileName = scanner.next();
+        String decryptedFileName = scanner.next();
+        String key = scanner.next();
         String[] parameters = new String[3];
         parameters[0] = encryptedFileName;
         parameters[1] = decryptedFileName;
         parameters[2] = key;
 
-        return mainController.execute("decrypt", parameters);
+        return mainController.execute("DECRYPT", parameters);
     }
 
     private Result bruteForceHack() {
         System.out.println("Enter: encrypted source and destination for decrypted file");
-        String encryptedSource = scanner.nextLine();
-        String destination = scanner.nextLine();
+        String encryptedSource = scanner.next();
+        String destination = scanner.next();
         String[] parameters = new String[2];
         parameters[0] = encryptedSource;
         parameters[1] = destination;
@@ -87,9 +93,9 @@ public class Application {
 
     private Result statisticAnalyze() {
         System.out.println("Enter: encrypted source, dictionary and destination for decrypted file");
-        String encryptedSource = scanner.nextLine();
-        String dictionary = scanner.nextLine();
-        String destination = scanner.nextLine();
+        String encryptedSource = scanner.next();
+        String dictionary = scanner.next();
+        String destination = scanner.next();
         String[] parameters = new String[3];
         parameters[0] = encryptedSource;
         parameters[1] = dictionary;

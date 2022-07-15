@@ -81,7 +81,8 @@ public class Application {
     }
 
     private Result bruteForceHack() {
-        System.out.println("Enter: encrypted source and destination for decrypted file");
+        System.out.println("Enter: encrypted source and destination for decrypted file. \n" +
+                "OR copy this: encrypted.txt decrypted.txt");
         String encryptedSource = scanner.next();
         String destination = scanner.next();
         String[] parameters = new String[2];

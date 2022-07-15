@@ -5,6 +5,9 @@ import ru.javarush.cryptoanalyzer.shchukina.entity.Result;
 
 import java.util.Scanner;
 
+import static ru.javarush.cryptoanalyzer.shchukina.constant.Messages.*;
+
+
 public class Application {
 
     private final MainController mainController;
@@ -37,71 +40,51 @@ public class Application {
                     result = null;
                     quit = true;
                 }
-                default -> System.out.println("You entered incorrect value. Please, try again.");
+                default -> {
+                    result = null;
+                    System.out.println(INCORRECT_VALUE_MESSAGE);
+                }
             }
         }
-
         return result;
     }
 
     private void printInstructions() {
-        System.out.println("Choose action, enter: ");
-        System.out.println("\t 0 - To print instructions.");
-        System.out.println("\t 1 - To encrypt data.");
-        System.out.println("\t 2 - To decrypt data (have a key).");
-        System.out.println("\t 3 - To decrypt data by brute force way (no key).");
-        System.out.println("\t 4 - To decrypt by statistical analysis.");
-        System.out.println("\t 5 - To exit.");
+        System.out.println(INSTRUCTIONS);
     }
 
     private Result encrypt() {
-        System.out.println("Enter: source, destination for encrypted file and key");
-        String fileName = scanner.next();
-        String encryptedFileName = scanner.next();
-        String key = scanner.next();
-        String[] parameters = new String[3];
-        parameters[0] = fileName;
-        parameters[1] = encryptedFileName;
-        parameters[2] = key;
+        System.out.println(ENCRYPT_MESSAGE);
+        String[] parameters = getParameters(3);
 
         return mainController.execute("ENCRYPT", parameters);
     }
 
     private Result decrypt() {
-        System.out.println("Enter: encrypted source, destination for decrypted file and key");
-        String encryptedFileName = scanner.next();
-        String decryptedFileName = scanner.next();
-        String key = scanner.next();
-        String[] parameters = new String[3];
-        parameters[0] = encryptedFileName;
-        parameters[1] = decryptedFileName;
-        parameters[2] = key;
+        System.out.println(DECRYPT_MESSAGE);
+        String[] parameters = getParameters(3);
 
         return mainController.execute("DECRYPT", parameters);
     }
 
     private Result bruteForceHack() {
-        System.out.println("Enter: encrypted source and destination for decrypted file. \n" +
-                "OR copy this: encrypted.txt decrypted.txt");
-        String encryptedSource = scanner.next();
-        String destination = scanner.next();
-        String[] parameters = new String[2];
-        parameters[0] = encryptedSource;
-        parameters[1] = destination;
+        System.out.println(BRUTE_FORCE_MESSAGE);
+        String[] parameters = getParameters(2);
 
-        return mainController.execute("decrypt_by_brute_force", parameters);
+        return mainController.execute("DECRYPT_BY_BRUTE_FORCE", parameters);
     }
 
     private Result statisticAnalyze() {
-        System.out.println("Enter: encrypted source, dictionary and destination for decrypted file");
-        String encryptedSource = scanner.next();
-        String dictionary = scanner.next();
-        String destination = scanner.next();
-        String[] parameters = new String[3];
-        parameters[0] = encryptedSource;
-        parameters[1] = dictionary;
-        parameters[2] = destination;
+        System.out.println(STATISTIC_ANALYZE_MESSAGE);
+        String[] parameters = getParameters(3);
+        return mainController.execute("DECRYPT_BY_STATISTICAL_ANALYZE", parameters);
+    }
 
-        return mainController.execute("decrypt_by_statistical_analyze", parameters);
+    private String[] getParameters(int countOfParameters) {
+        String[] parameters = new String[countOfParameters];
+        for (int i = 0; i < parameters.length; i++) {
+            parameters[i] = scanner.next();
+        }
+        return parameters;
     }
 }

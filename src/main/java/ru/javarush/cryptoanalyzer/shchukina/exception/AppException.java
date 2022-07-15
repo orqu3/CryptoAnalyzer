@@ -1,6 +1,7 @@
 package ru.javarush.cryptoanalyzer.shchukina.exception;
 
 public class AppException extends RuntimeException {
+
     public AppException() {
         super();
     }
@@ -16,4 +17,5 @@ public class AppException extends RuntimeException {
     public AppException(Throwable cause) {
         super(cause);
     }
+
 }

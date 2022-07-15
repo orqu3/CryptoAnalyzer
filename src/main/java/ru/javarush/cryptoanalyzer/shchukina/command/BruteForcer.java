@@ -15,15 +15,15 @@ import java.util.List;
 import static ru.javarush.cryptoanalyzer.shchukina.constant.Strings.ALPHABET;
 
 public class BruteForcer implements Action {
+
     @Override
     public Result execute(String[] parameters) {
-        String source = parameters[0];
-        String destination = parameters[1];
 
-        Path sourcePath = Path.of(PathFinder.getRoot() + source);
-        Path destinationPath = Path.of(PathFinder.getRoot() + destination);
+        Path sourcePath = Path.of(PathFinder.getRoot() + parameters[0]);
+        Path destinationPath = Path.of(PathFinder.getRoot() + parameters[1]);
 
         try (FileWriter writer = new FileWriter(String.valueOf(destinationPath), false)) {
+
             List<String> encryptedStrings = Files.readAllLines(sourcePath);
             List<String> decryptedStrings = new ArrayList<>();
 
@@ -72,23 +72,19 @@ public class BruteForcer implements Action {
     }
 
     private String leftShift(String string, Integer key) {
-        String decryptedString;
-        StringBuilder builder = new StringBuilder();
+        StringBuilder decrypted = new StringBuilder();
 
         for (int i = 0; i < string.length(); i++) {
             char symbol = string.toLowerCase().charAt(i);
             int alphabetSymbolIndex = ALPHABET.indexOf(symbol);
             int offset = (alphabetSymbolIndex + (ALPHABET.length() - (key % ALPHABET.length()))) % ALPHABET.length();
 
-
             if (alphabetSymbolIndex != -1) {
-                builder.append(ALPHABET.charAt(offset));
+                decrypted.append(ALPHABET.charAt(offset));
             } else {
-                builder.append(symbol);
+                decrypted.append(symbol);
             }
         }
-        decryptedString = builder.toString();
-
-        return decryptedString;
+        return decrypted.toString();
     }
 }

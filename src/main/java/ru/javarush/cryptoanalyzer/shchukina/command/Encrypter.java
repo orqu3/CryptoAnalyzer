@@ -18,12 +18,10 @@ public class Encrypter implements Action {
 
     @Override
     public Result execute(String[] parameters) {
-        String source = parameters[0];
-        String destination = parameters[1];
-        Integer key = Integer.parseInt(parameters[2]);
 
-        Path sourcePath = Path.of(PathFinder.getRoot() + source);
-        Path destinationPath = Path.of(PathFinder.getRoot() + destination);
+        Path sourcePath = Path.of(PathFinder.getRoot() + parameters[0]);
+        Path destinationPath = Path.of(PathFinder.getRoot() + parameters[1]);
+        Integer key = Integer.parseInt(parameters[2]);
 
         try (FileWriter writer = new FileWriter(String.valueOf(destinationPath), false)) {
             List<String> strings = Files.readAllLines(sourcePath);
@@ -48,8 +46,7 @@ public class Encrypter implements Action {
     }
 
     private String rightShift(String string, Integer key) {
-        String encryptedString;
-        StringBuilder builder = new StringBuilder();
+        StringBuilder decrypted = new StringBuilder();
 
         for (int i = 0; i < string.length(); i++) {
             char symbol = string.toLowerCase().charAt(i);
@@ -57,14 +54,12 @@ public class Encrypter implements Action {
             int offset = (alphabetSymbolIndex + key) % ALPHABET.length();
 
             if (alphabetSymbolIndex != -1) {
-                builder.append(ALPHABET.charAt(offset));
+                decrypted.append(ALPHABET.charAt(offset));
             } else {
-                builder.append(symbol);
+                decrypted.append(symbol);
             }
         }
-        encryptedString = builder.toString();
-
-        return encryptedString;
+        return decrypted.toString();
     }
 }
 

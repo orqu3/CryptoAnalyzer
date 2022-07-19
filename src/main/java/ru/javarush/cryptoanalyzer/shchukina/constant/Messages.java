@@ -15,16 +15,16 @@ public class Messages {
     public static final String INCORRECT_VALUE_MESSAGE = ANSI_RED + "You entered incorrect value. Please, try again!" + ANSI_RESET;
 
     public static final String ENCRYPT_MESSAGE = ANSI_PURPLE + "Enter: " + ANSI_RESET + "source, destination for " +
-            "encrypted file and key.\n" + ANSI_PURPLE + "OR copy this and " + ANSI_RESET + ANSI_RED +
-            "DON'T FORGET ADD YOUR KEY" + ANSI_RESET + ": " + ANSI_CYAN + "text.txt encrypted.txt " + ANSI_RESET;
+            "encrypted file and key.\n" + ANSI_PURPLE + "OR copy this: " + ANSI_RESET + ANSI_CYAN +
+            "text.txt encrypted.txt 6" + ANSI_RESET;
 
     public static final String DECRYPT_MESSAGE = ANSI_PURPLE + "Enter: " + ANSI_RESET + "source, destination for " +
-            "decrypted file and key.\n" + ANSI_PURPLE + "OR copy this and " + ANSI_RESET + ANSI_RED +
-            "DON'T FORGET ADD YOUR KEY" + ANSI_RESET + ": " + ANSI_CYAN + "encrypted.txt decrypted.txt " + ANSI_RESET;
+            "decrypted file and key.\n" + ANSI_PURPLE + "OR copy this: " + ANSI_RESET + ANSI_CYAN +
+            "encrypted.txt decrypted.txt 6" + ANSI_RESET;
 
     public static final String BRUTE_FORCE_MESSAGE = ANSI_PURPLE + "Enter: " + ANSI_RESET + "encrypted source and destination for " +
             "decrypted file.\n" + ANSI_PURPLE + "OR copy this: " + ANSI_RESET + ANSI_CYAN +
-            "encrypted.txt decrypted.txt" + ANSI_RESET;
+            "encrypted.txt bruteforced.txt" + ANSI_RESET;
 
     public static final String STATISTIC_ANALYZE_MESSAGE = ANSI_PURPLE + "Enter: " + ANSI_RESET + "encrypted source, dictionary and " +
             "destination for decrypted file.\n" + ANSI_PURPLE + "OR copy this: " + ANSI_RESET + ANSI_CYAN +

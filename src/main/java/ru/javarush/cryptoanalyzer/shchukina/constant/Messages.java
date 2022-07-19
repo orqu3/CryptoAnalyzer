@@ -26,6 +26,8 @@ public class Messages {
             "decrypted file.\n" + ANSI_PURPLE + "OR copy this: " + ANSI_RESET + ANSI_CYAN +
             "encrypted.txt decrypted.txt" + ANSI_RESET;
 
-    public static final String STATISTIC_ANALYZE_MESSAGE = "Enter: encrypted source, dictionary and destination for decrypted file";
+    public static final String STATISTIC_ANALYZE_MESSAGE = ANSI_PURPLE + "Enter: " + ANSI_RESET + "encrypted source, dictionary and " +
+            "destination for decrypted file.\n" + ANSI_PURPLE + "OR copy this: " + ANSI_RESET + ANSI_CYAN +
+            "encrypted.txt dictionary.txt analyzed.txt" + ANSI_RESET;
 
 }

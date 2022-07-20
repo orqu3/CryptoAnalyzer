@@ -30,4 +30,6 @@ public class Messages {
             "destination for decrypted file.\n" + ANSI_PURPLE + "OR copy this: " + ANSI_RESET + ANSI_CYAN +
             "encrypted.txt dictionary.txt analyzed.txt" + ANSI_RESET;
 
+    private Messages() {
+    }
 }

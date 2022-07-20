@@ -4,4 +4,6 @@ public class Strings {
 
     public static final String ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя.,«»:!? ";
 
+    private Strings() {
+    }
 }

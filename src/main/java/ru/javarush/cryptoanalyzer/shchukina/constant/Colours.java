@@ -8,4 +8,6 @@ public class Colours {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String PURPLE_BOLD = "\033[1;35m";
 
+    private Colours() {
+    }
 }

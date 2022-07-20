@@ -9,4 +9,7 @@ public class PathFinder {
 
         return root + File.separator + "text" + File.separator;
     }
+
+    private PathFinder() {
+    }
 }

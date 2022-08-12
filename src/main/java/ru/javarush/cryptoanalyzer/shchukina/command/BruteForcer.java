@@ -62,7 +62,7 @@ public class BruteForcer implements Action {
             }
 
             for (String string : decryptedStrings) {
-                if (string.contains(", что")) {
+                if (string.contains(". ") && string.contains(", ")) {
                     key = i;
                     break;
                 }
